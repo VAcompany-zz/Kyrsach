@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach.View.Pages"
+      xmlns:oxy="http://oxyplot.org/wpf"
       xmlns:vm="clr-namespace:Kyrsach.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -11,16 +12,25 @@
     <Page.DataContext>
         <vm:MainProgramViewModel/>
     </Page.DataContext>
+
     <Grid>
-        <Image Stretch="UniformToFill" Source="{StaticResource FoneImage}" />
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+            
+        <Image Grid.RowSpan="3"  Stretch="UniformToFill" Source="{StaticResource FoneImage}" />
+        
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0,5" Text="{Binding Balance}" VerticalAlignment="Top" FontSize="56"/>
             <TextBlock HorizontalAlignment="Center" Margin="4,-10,4,4" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Top" FontSize="20"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Отправить" HorizontalAlignment="Left" Margin="5,0" VerticalAlignment="Top" Width="128" Height="35"/>
                 <Button Content="Получить" HorizontalAlignment="Right" Margin="5,0"  VerticalAlignment="Top" Width="128" Height="35"/>
             </StackPanel>
-        </StackPanel> 
+        </StackPanel>
+        <oxy:PlotView  Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Model="{Binding PlotModel2}" Background="{x:Null}"/>
     </Grid>
     <!--<Grid>
         <Image Height="450" Stretch="UniformToFill" Source="{StaticResource FoneImage}" />

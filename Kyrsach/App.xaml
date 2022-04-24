@@ -14,14 +14,17 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="8"  BorderThickness="1" BorderBrush="Black" Background="#F5F5F5">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Border  CornerRadius="8"  BorderThickness="1" BorderBrush="White" >
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </Border> 
                         
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
 
     </Application.Resources>
 </Application>

@@ -35,5 +35,6 @@
 
 
         </StackPanel>
+        <Button Click="Button_Click_1" Content="Button" HorizontalAlignment="Left" Margin="211,45,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Page>

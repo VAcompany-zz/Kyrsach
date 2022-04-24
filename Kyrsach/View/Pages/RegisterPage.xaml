@@ -15,26 +15,26 @@
             <Label Content="Логин" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15"/>
             <TextBox x:Name="RegLogin" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
             <Label Content="Пароль" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15"/>
-            <PasswordBox x:Name="RegPWDPasswordBox"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="150"/>
+            <PasswordBox x:Name="RegPWDPasswordBox"  HorizontalAlignment="Center"  VerticalAlignment="Top" Width="150"/>
             <Label Content="Повтор пароль" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15"/>
             <PasswordBox x:Name="RegPWDPasswordBox2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150"/>
-            <Label Content="Почта" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="15"/>
+            <Label Content="Почта" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15"/>
             <TextBox Margin="0,5" Name="RegMail" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="150"/>
             <DatePicker Margin="0,5" Name="RegDate" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="150" Height="42" />
-            <Button Visibility="Visible"  Name="CheckMail" Click="Button_Click" Content="Подтвердить почту" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="113" Height="19" FontSize="10">
-            <Button.Effect>
-                <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
-            </Button.Effect>
-        </Button>
-            <TextBlock Visibility="Hidden" Name="CheckMailCode2"  HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Код" VerticalAlignment="Top" RenderTransformOrigin="0.859,0.382" FontSize="14"/>
-            <TextBox  Margin="0,5" Visibility="Hidden" Name="CheckMailCode" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="92"/>
-            <Button Margin="0,5" Visibility="Hidden"  Name="CheckMailCodey" Click="CheckMailCode3" Content="Проверить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="80" Height="19" FontSize="10">
+            <Button Visibility="Visible"  Name="CheckMail" Click="Button_Click" Content="Подтвердить почту" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="189" Height="40" FontSize="20" Foreground="White">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
                 </Button.Effect>
             </Button>
-           
-            <Button   Visibility="Hidden" Name="CheckMail2" Click="Button_Click2" Content="Зарегестрироваться" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50">
+            <TextBlock Visibility="Hidden" Name="CheckMailCode2"  HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Код" VerticalAlignment="Top" RenderTransformOrigin="0.859,0.382" FontSize="14"/>
+            <TextBox  Margin="0,5" Visibility="Hidden" Name="CheckMailCode" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="92"/>
+            <Button Margin="0,5" Foreground="White" Visibility="Hidden"  Name="CheckMailCodey" Click="CheckMailCode3" Content="Проверить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="95" Height="24" FontSize="14">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
+                </Button.Effect>
+            </Button>
+
+            <Button   Visibility="Hidden" Foreground="White" Name="CheckMail2" Click="Button_Click2" Content="Зарегестрироваться" HorizontalAlignment="Center" VerticalAlignment="Top" Width="158" Height="50" FontSize="16">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
                 </Button.Effect>
