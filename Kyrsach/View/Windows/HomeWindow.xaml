@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kyrsach.View.Windows"
         mc:Ignorable="d"
-        Title="VA_Crypto" Height="650" Width="800" WindowStyle="ThreeDBorderWindow"
-          WindowStartupLocation="CenterScreen" Name="LoginWindow">
+        Title="VA_Crypto" Height="950" Width="1000" WindowStyle="ThreeDBorderWindow"
+          WindowStartupLocation="CenterScreen" Name="LoginWindow" MinHeight="900" MinWidth="550">
     <Frame Name="mainFrame" Background="White" NavigationUIVisibility="Hidden">
 
     </Frame>

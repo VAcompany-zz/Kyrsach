@@ -5,40 +5,52 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach.View.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="500"
-      Title="RegisterPage"
+       d:DesignHeight="950" d:DesignWidth="1000"
+      Title="VA_Crypto"
       >
 
     <Grid>
-        <Image Stretch="UniformToFill" Source="{StaticResource signatureSrc}" />
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF17191B" Offset="1"/>
+                <GradientStop Color="#FF282C2E" Offset="0.003"/>
+                <GradientStop Color="#FF262829" Offset="0.49"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        
+        <!--<Image Stretch="UniformToFill" Source="{StaticResource signatureSrc}" />-->
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label Content="Логин" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15"/>
-            <TextBox x:Name="RegLogin" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-            <Label Content="Пароль" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15"/>
-            <PasswordBox x:Name="RegPWDPasswordBox"  HorizontalAlignment="Center"  VerticalAlignment="Top" Width="150"/>
-            <Label Content="Повтор пароль" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15"/>
-            <PasswordBox x:Name="RegPWDPasswordBox2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150"/>
-            <Label Content="Почта" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15"/>
-            <TextBox Margin="0,5" Name="RegMail" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="150"/>
-            <DatePicker Margin="0,5" Name="RegDate" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="150" Height="42" />
-            <Button Visibility="Visible"  Name="CheckMail" Click="Button_Click" Content="Подтвердить почту" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="189" Height="40" FontSize="20" Foreground="White">
+            <Label Content="Логин" HorizontalAlignment="Center"  VerticalAlignment="Top" Foreground="#FFF3F3F3" FontSize="28" />
+            <TextBox x:Name="RegLogin" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="28" Height="44" Width="250"/>
+            <Label Foreground="#FFF3F3F3" Content="Пароль" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="28"/>
+            <PasswordBox x:Name="RegPWDPasswordBox"  HorizontalAlignment="Center"  VerticalAlignment="Top" Height="44" Width="250" FontSize="28"/>
+            <Label  Foreground="#FFF3F3F3" Content="Повтор пароль" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="28"/>
+            <PasswordBox x:Name="RegPWDPasswordBox2" HorizontalAlignment="Center" VerticalAlignment="Top" Height="44" Width="250" FontSize="28"/>
+            <Label  Foreground="#FFF3F3F3" Content="Почта" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="28" />
+            
+            <TextBox Margin="0,5" Name="RegMail" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="44" Width="250" FontSize="28"/>
+            <TextBlock Name="txtEmail_Error" FontSize="15" Margin="0,5,0,5" Text="E-mail указан неверно" Foreground="Red" Visibility="Hidden" />
+            
+            <DatePicker Margin="0,5" Name="RegDate" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="44" Width="250" FontSize="28" />
+            <Button Visibility="Visible"  Name="CheckMail" Click="Button_Click" Content="Подтвердить почту" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="44" Width="250" FontSize="25" Foreground="White">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
                 </Button.Effect>
             </Button>
-            <TextBlock Visibility="Hidden" Name="CheckMailCode2"  HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Код" VerticalAlignment="Top" RenderTransformOrigin="0.859,0.382" FontSize="14"/>
-            <TextBox  Margin="0,5" Visibility="Hidden" Name="CheckMailCode" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="92"/>
-            <Button Margin="0,5" Foreground="White" Visibility="Hidden"  Name="CheckMailCodey" Click="CheckMailCode3" Content="Проверить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="95" Height="24" FontSize="14">
+            <TextBlock Visibility="Hidden" Name="CheckMailCode2"  HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Код" VerticalAlignment="Top" Foreground="White" FontSize="25"/>
+            <TextBox FontSize="26" Margin="0,5" Visibility="Hidden" Name="CheckMailCode" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="44" Width="92"/>
+            <Button Margin="0,5" Foreground="White" Visibility="Hidden"  Name="CheckMailCodey" Click="CheckMailCode3"  Content="Проверить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="95" Height="44" FontSize="17">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
                 </Button.Effect>
             </Button>
 
-            <Button   Visibility="Hidden" Foreground="White" Name="CheckMail2" Click="Button_Click2" Content="Зарегестрироваться" HorizontalAlignment="Center" VerticalAlignment="Top" Width="158" Height="50" FontSize="16">
+            <Button   Visibility="Hidden" Foreground="White" Name="CheckMail2" Click="Button_Click2" Content="Зарегестрироваться" HorizontalAlignment="Center" VerticalAlignment="Top" Height="44" Width="250" FontSize="20">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
                 </Button.Effect>
             </Button>
         </StackPanel>
+        <Button Click="Close_Window" HorizontalAlignment="Right" Content="X" Margin="0,15,15,0" VerticalAlignment="Top" Width="40" Height="40" FontSize="25"/>
     </Grid>
 </Page>

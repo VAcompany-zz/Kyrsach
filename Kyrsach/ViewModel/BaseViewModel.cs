@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Kyrsach.ViewModel
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string PropertyName = null)
@@ -22,5 +22,18 @@ namespace Kyrsach.ViewModel
             OnPropertyChanged(PropertyName);
             return true;
         }
+
     }
+    public interface ICommand
+    {
+        void Execute(object param);
+        bool CanExecute(object param);
+        event EventHandler<object> CanExecuteChanged;
+    }
+    public interface IDelegateCommand : ICommand
+    {
+        void RaiseCanExecuteChanged();
+    }
+    
+
 }

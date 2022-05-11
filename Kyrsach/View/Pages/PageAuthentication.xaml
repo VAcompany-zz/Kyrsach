@@ -5,14 +5,21 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach.View.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="500"
-      Title="Page2">
+      d:DesignHeight="950" d:DesignWidth="1000"
+      Title="VA_Crypto">
     <Grid>
-        <Image Stretch="UniformToFill" Source="{StaticResource signatureSrc}" />
+        <!--<Image Stretch="UniformToFill" Source="{StaticResource signatureSrc}" />-->
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF17191B" Offset="1"/>
+                <GradientStop Color="#FF282C2E" Offset="0.003"/>
+                <GradientStop Color="#FF262829" Offset="0.49"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Margin="0,5" Content="Код" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="35" Width="42" FontSize="18"/>
-            <TextBox Margin="0,8" Name="CheckCode" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202" FontSize="18"/>
-            <Button Margin="0,6" BorderThickness="1" Click="RepetCode" Name="Repet_Code" Background="White" BorderBrush="White" Content="Отправить код ещё раз" HorizontalAlignment="Center" Width="176" Height="24" FontSize="10"/>
+            <Label Foreground="#FFF3F3F3" Margin="05" Content="Код" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="40" Width="200" FontSize="25"/>
+            <TextBox Margin="0,8" Name="CheckCode" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="35" Width="202" FontSize="20"/>
+            <Button Margin="0,6"   BorderThickness="1" Click="RepetCode" Name="Repet_Code"  Content="Отправить код ещё раз" HorizontalAlignment="Center" Width="176"  Height="35" FontSize="15"/>
             <Button   Click="Button_Click" Content="Подтвердить" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="67" Width="202" FontSize="18">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>

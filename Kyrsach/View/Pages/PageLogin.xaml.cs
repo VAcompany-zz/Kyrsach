@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.Security.Cryptography;
 using System.Data.SqlClient;
 using System.Data;
+using Kyrsach.ViewModel;
+using Kyrsach.Model;
 
 namespace Kyrsach.View.Pages
 {
@@ -23,40 +25,30 @@ namespace Kyrsach.View.Pages
     /// </summary>
     public partial class PageLogin : Page
     {
-        Class1 MainFunck = new Class1();
-        DataBase dataBase = new DataBase();
 
+        DataBase data = new DataBase();
         public PageLogin()
         {
 
             InitializeComponent();
             
         }
+        private string password;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if ((bool)checkBoxPwd.IsChecked)
+            {
+                password = pwdTextBox.Text;
+            }
+            else password = pwdPasswordBox.Password;
 
             if (Login.Text.Length > 0)
             {
                 if (pwdPasswordBox.Password.Length > 0)
                 {
-
-
-                    App.Current.Resources["SaveLogin"] = Login.Text;
-                    string PasswordHash = dataBase.HashFuncExamination(pwdPasswordBox.Password);
-
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    DataTable table = new DataTable();
-
-                    string querystring = $"select userID, loginID, password, mail, date from users where loginID = '{Login.Text}' and password = '{PasswordHash}'";
-                    SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
-                    adapter.SelectCommand = command;
-                    adapter.Fill(table);
-                    if (table.Rows.Count == 1)
+                    if (App.Authentication.Login(Login.Text, password))
                     {
-                        App.Current.Resources["SaveLogin"] = table.Rows[0][3].ToString();
-                        MainFunck.SendEmail();
-                        NavigationService.Navigate(new PageAuthentication ());
-                        
+                        NavigationService.Navigate(new PageAuthentication());
                     }
                     else
                     {
@@ -66,6 +58,7 @@ namespace Kyrsach.View.Pages
                 else MessageBox.Show("Введите пароль");
             }
             else MessageBox.Show("Введите логин");
+
         }
         //public string HashFuncExamination(string source)
         //{
@@ -90,6 +83,7 @@ namespace Kyrsach.View.Pages
         //}
         private void RegisterClick(object sender, RoutedEventArgs e)
         {
+              
             NavigationService.Navigate(new RegisterPage());
         }
 
@@ -112,6 +106,9 @@ namespace Kyrsach.View.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            //var date2 = data.exchangeRatesChanges2();
+            //MessageBox.Show(date2.Rows[0][2].ToString());
+          
             NavigationService.Navigate(new MainProgramPage());
         }
     }

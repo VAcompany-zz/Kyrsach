@@ -1,4 +1,5 @@
 ﻿using Kyrsach.View.Pages;
+using Kyrsach.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,14 @@ namespace Kyrsach.View.Windows
     /// </summary>
     public partial class HomeWindow : Window
     {
+        
         public HomeWindow()
         {
             InitializeComponent();
             mainFrame.Content = new PageLogin();
-
+            
         }
+        
         //public static void CreateTimeoutTestMessage(string server)
         //{
         //    string to = "vlad.aksennik@mail.ru";

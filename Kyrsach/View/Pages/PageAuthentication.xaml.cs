@@ -22,20 +22,17 @@ namespace Kyrsach.View.Pages
     public partial class PageAuthentication : Page
     {
         bool flag = true;
-        Class1 MainFunck = new Class1();
+        MailSender MainFunck = new MailSender();
         
         public PageAuthentication()
         {
             InitializeComponent();
-            
         }
-      
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckCode.Text == App.Current.Resources["Code"].ToString())
+            if (App.Authentication.CheckMail(CheckCode.Text,App.Current.Resources["Code"].ToString()))
             {
-                MessageBox.Show("Добро пожаловать");
-                //ProgramWindow programWindow = new ProgramWindow();
+                MessageBox.Show("Добро пожаловать");   
                 NavigationService.Navigate(new MainProgramPage());
             }
             else
@@ -43,12 +40,10 @@ namespace Kyrsach.View.Pages
         }
         private void RepetCode(object sender, RoutedEventArgs e)
         {
-            
             if (flag)
             {
                 MainFunck.SendEmail();
                 flag = false;
-               
             }
             else
                 MessageBox.Show("Больше не отправим");

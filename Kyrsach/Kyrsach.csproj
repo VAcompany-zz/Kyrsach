@@ -35,6 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="OxyPlot, Version=2.1.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.Core.2.1.0\lib\net45\OxyPlot.dll</HintPath>
     </Reference>
@@ -44,9 +53,13 @@
     <Reference Include="OxyPlot.Wpf.Shared, Version=2.1.0.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.Wpf.Shared.2.1.0\lib\net45\OxyPlot.Wpf.Shared.dll</HintPath>
     </Reference>
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,15 +79,56 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\LambdaCommand.cs" />
+    <Compile Include="Model\Currency.cs" />
+    <Compile Include="Model\HistoryTransactionModel.cs" />
+    <Compile Include="Model\LoginArgs.cs" />
+    <Compile Include="Model\Util.cs" />
+    <Compile Include="Services\BalanceTransactions.cs" />
+    <Compile Include="ViewModel\ExchangeViewModel.cs" />
+    <Compile Include="ViewModel\HistoryTranscriptionViewModel.cs" />
+    <Compile Include="ViewModel\WalletViewModel.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainProgramViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\Convertors\CorrencyConvertor.cs" />
+    <Compile Include="View\Pages\ExchangeCurrancy.xaml.cs">
+      <DependentUpon>ExchangeCurrancy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\HistoryTransaction.xaml.cs">
+      <DependentUpon>HistoryTransaction.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\MainProgramPage.xaml.cs">
       <DependentUpon>MainProgramPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Receive.xaml.cs">
+      <DependentUpon>Receive.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resurser\Themes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ExchangeCurrancy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\HistoryTransaction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Receive.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\SendCurrancy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\HomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,9 +137,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Class1.cs" />
+    <Compile Include="Model\MailSender.cs" />
     <Compile Include="Model\DataBase.cs" />
     <Compile Include="Model\HashFunc.cs" />
+    <Compile Include="View\Pages\SendCurrancy.xaml.cs">
+      <DependentUpon>SendCurrancy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
@@ -147,6 +204,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resurser\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resurser\BitCoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resurser\Ethereum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resurser\BNB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resurser\Zcash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

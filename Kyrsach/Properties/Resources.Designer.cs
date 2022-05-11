@@ -77,5 +77,14 @@ namespace Kyrsach.Properties {
                 return ResourceManager.GetString("SaveLogin", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string SaveMail {
+            get {
+                return ResourceManager.GetString("SaveMail", resourceCulture);
+            }
+        }
     }
 }

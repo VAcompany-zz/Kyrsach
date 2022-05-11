@@ -5,28 +5,35 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach.View.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="500"
-      Title="Page1">
+      d:DesignHeight="950" d:DesignWidth="1000"
+      Title="VA_Crypto">
 
     <Grid>
-        <Image Stretch="UniformToFill" Source="{StaticResource signatureSrc}" />
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF17191B" Offset="1"/>
+                <GradientStop Color="#FF282C2E" Offset="0.003"/>
+                <GradientStop Color="#FF262829" Offset="0.49"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <!--<Image Stretch="UniformToFill" Source="{StaticResource signatureSrc}" />-->
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
 
-            <Label Content="Логин" HorizontalAlignment="Left"   FontSize="18"/>
-            <TextBox Name="Login" HorizontalAlignment="Center"  TextWrapping="Wrap" Text=""  Width="150" FontSize="18"/>
-            <Label Content="Пароль" HorizontalAlignment="Left"   FontSize="18"/>
+            <Label Content="Логин" HorizontalAlignment="Left"   Foreground="#FFF4F4F4" FontSize="24"/>
+            <TextBox Name="Login" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" Height="44" Width="250" FontSize="30"/>
+            <Label Content="Пароль" HorizontalAlignment="Left"  Foreground="#FFF4F4F4" FontSize="24"/>
             <Grid Margin="0,-2,0,0">
-                <TextBox  Name="pwdTextBox"  HorizontalAlignment="Center" Height="24" Width="150" Visibility="Visible" FontSize="18"/>
-                <PasswordBox  Name="pwdPasswordBox" Height="24" HorizontalAlignment="Center"   Width="150" FontSize="18" />
+                <TextBox  Name="pwdTextBox"  HorizontalAlignment="Center" Height="44" Width="250" Visibility="Visible" FontSize="30"/>
+                <PasswordBox  Name="pwdPasswordBox" Height="44" HorizontalAlignment="Center"   Width="250" FontSize="30" />
             </Grid>
-            <CheckBox Margin="0,5,0,0" Name="checkBoxPwd" Content="Show password" HorizontalAlignment="Left"   Click="CheckBox_Click" FontSize="14" MinWidth="14"/>
-            <Button Click="Button_Click" Margin="0,5,0,0" Content="Войти" HorizontalAlignment="Center"  Width="150" Height="50" FontSize="18">
+            <CheckBox Margin="0,5,0,0" Name="checkBoxPwd" Foreground="#FFF4F4F4" Content="Show password" HorizontalAlignment="Left"  Click="CheckBox_Click" FontSize="18" MinWidth="14"/>
+            <Button Click="Button_Click" Margin="0,5,0,0" Content="Войти" HorizontalAlignment="Center"  Width="250" Height="50" FontSize="18">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
                 </Button.Effect>
             </Button>
-            <Button Click="RegisterClick" Margin="0,5,0,0" Content="Зарегистрироваться" HorizontalAlignment="Center"  Width="150" Height="19">
+            <Button Click="RegisterClick" Margin="0,15,0,0" Content="Зарегистрироваться" HorizontalAlignment="Center" FontSize="16" Width="250" Height="30">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="0" Opacity="0.1" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
                 </Button.Effect>
@@ -35,6 +42,6 @@
 
 
         </StackPanel>
-        <Button Click="Button_Click_1" Content="Button" HorizontalAlignment="Left" Margin="211,45,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Click="Button_Click_1" Visibility="Collapsed" Content="Button" HorizontalAlignment="Left" Margin="211,45,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Page>

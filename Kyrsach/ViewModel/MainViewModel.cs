@@ -8,12 +8,12 @@ namespace Kyrsach.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        private string _Title = "VA_Crypto";
-        public string Title
-        {
-            get => _Title;
-            set => Set(ref _Title, value);
-        }
+        //private string _Title = "VA_Crypto";
+        //public string Title
+        //{
+        //    get => _Title;
+        //    set => Set(ref _Title, value);
+        //}
      
 
 

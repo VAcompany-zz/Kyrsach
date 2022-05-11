@@ -3,10 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Kyrsach"
              StartupUri="View\Windows\HomeWindow.xaml">
+ 
     <Application.Resources>
-        <BitmapImage x:Key="signatureSrc" UriSource="Resurser/1.jpg" />
-        <BitmapImage x:Key="FoneImage" UriSource="Resurser/2.jpg" />
-        <Style TargetType="Button">
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resurser/Themes.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+       
+        <!--<Style TargetType="Button">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Setter Property="Width" Value="150"/>
@@ -24,7 +30,7 @@
         </Style>
             <Style TargetType="Label">
                 <Setter Property="Foreground" Value="White"/>
-            </Style>
+            </Style>-->
 
     </Application.Resources>
 </Application>

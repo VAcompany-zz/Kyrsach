@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+using Kyrsach.Model;
 
 namespace Kyrsach.View.Pages
 {
@@ -22,40 +24,70 @@ namespace Kyrsach.View.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
-        Class1 MainFunc = new Class1();
-        DataBase dataBase = new DataBase();
+        MailSender MainFunc = new MailSender();
         bool flag = false;
         public RegisterPage()
         {
             InitializeComponent();
         }
+     
+        private void txtEmail_LostFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
 
+            string email = RegMail.Text.Trim();
+
+            if (!Util.IsEmail(email))
+            {
+                e.Handled = true;
+                txtEmail_Error.Visibility = Visibility.Visible;
+                RegMail.Focus();
+            }
+            else
+                txtEmail_Error.Visibility = Visibility.Collapsed;
+
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.Resources["SaveLogin"] = RegMail.Text;
-            MainFunc.SendEmail();
-            CheckMailCode.Visibility = Visibility.Visible;
-            CheckMailCode2.Visibility = Visibility.Visible;
-            CheckMail.Visibility = Visibility.Hidden;
-            CheckMailCodey.Visibility = Visibility.Visible;
-            CheckMailCodey.Visibility = Visibility.Visible;
+            string email = RegMail.Text.Trim();
+
+            if (!Util.IsEmail(email))
+            {
+                e.Handled = true;
+                txtEmail_Error.Visibility = Visibility.Visible;
+                RegMail.Focus();
+                RegMail.Clear();
+            }
+            else
+            {
+                txtEmail_Error.Visibility = Visibility.Hidden;
+
+                App.Current.Resources["SaveMail"] = RegMail.Text;
+                MainFunc.SendEmail();
+                RegMail.IsReadOnly = true;
+                CheckMailCode.Visibility = Visibility.Visible;
+                CheckMailCode2.Visibility = Visibility.Visible;
+                CheckMail.Visibility = Visibility.Hidden;
+                CheckMailCodey.Visibility = Visibility.Visible;
+                CheckMailCodey.Visibility = Visibility.Visible;
+            }
+            
 
         }
         private void CheckMailCode3(object sender, RoutedEventArgs e)
         {
-            if (CheckMailCode.Text == App.Current.Resources["Code"].ToString())
+            if (App.Authentication.CheckMail(CheckMailCode.Text, App.Current.Resources["Code"].ToString()))
             {
-                flag = true;
                 MessageBox.Show("Почта подтверждена");
-                CheckMailCodey.Visibility = Visibility.Hidden;
+                RegMail.IsReadOnly = true;
+                CheckMailCodey.Visibility = Visibility.Collapsed;
+                CheckMailCode.Visibility = Visibility.Collapsed;
+                CheckMailCode2.Visibility = Visibility.Collapsed;
                 CheckMail2.Visibility = Visibility.Visible;
             }
-            else 
-            { 
-                flag = false;
+            else
+            {
                 MessageBox.Show("Неверный код");
             };
-
         }
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
@@ -64,31 +96,50 @@ namespace Kyrsach.View.Pages
 
             DateTime date = RegDate.DisplayDate;
             int Year = now.Year - date.Year;
-            if (Year >= 18)
+            if (RegLogin.Text == "")
             {
-                if (flag)
+                MessageBox.Show("Логин не заполнен");
+            }
+            else
+            {
+                if ((RegPWDPasswordBox.Password.Length >= 6) && (RegPWDPasswordBox2.Password.Length >= 6))
                 {
-                    string PasswordHash = dataBase.HashFuncExamination(RegPWDPasswordBox.Password);
-
-                    string querystring = $"insert into users(loginID, password, mail, date) values('{RegLogin.Text}','{PasswordHash}','{RegMail.Text}','{date}')";
-                    SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
-                    dataBase.openConnection();
-                    if (command.ExecuteNonQuery() == 1)
-                    {
-                        MessageBox.Show("Аккаунт зарегестрирован");
-                        dataBase.closeConnection();
-                        NavigationService.Navigate(new PageLogin());
-                    }
-                    else { MessageBox.Show("Аккаунт не зарегестрирован"); }
+                    MessageBox.Show("Пароль должен быть больше 6 символов");
                 }
                 else
                 {
-                    CheckMail.Visibility = Visibility.Hidden;
+
+                if (RegPWDPasswordBox.Password != RegPWDPasswordBox2.Password)
+                {
+                    MessageBox.Show("Пароли не совпадают");
+                }
+                else
+                {
+                    if (Year >= 18)
+                    {
+                        flag = true;
+                        if (flag)
+                        {
+                            if (App.Authentication.Register(RegLogin.Text, RegPWDPasswordBox.Password, RegMail.Text, date))
+                            {
+                                MessageBox.Show("Аккаунт зарегестрирован");
+                                NavigationService.Navigate(new PageLogin());
+                            }
+                            else { MessageBox.Show("Аккаунт не зарегестрирован"); }
+                        }
+                        else
+                        {
+                            CheckMail.Visibility = Visibility.Hidden;
+                        }
+                    }
+                    else { MessageBox.Show("Вам нет 18"); }
+                }
                 }
             }
-            else { MessageBox.Show("Вам нет 18"); }
-           
         }
-        
+        private void Close_Window(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

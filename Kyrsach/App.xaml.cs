@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kyrsach.Services;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,7 @@ namespace Kyrsach
     /// </summary>
     public partial class App : Application
     {
+        public static AuthenticationService Authentication { get; set; } = new AuthenticationService();
+        public static BalanceTransactions BalanceTransactions { get; set; } = new BalanceTransactions();
     }
 }

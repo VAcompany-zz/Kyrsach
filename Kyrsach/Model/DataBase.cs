@@ -19,7 +19,7 @@ using System.Data;
 
 namespace Kyrsach
 {
-    class DataBase
+    public class DataBase
     {
         HashFunc Hash = new HashFunc();
         SqlConnection sqlConnection = new SqlConnection(@"Data Source=DESKTOP-PQRNELH\SQLEXPRESS;Initial Catalog=VA_Crypto;Integrated Security=True");
@@ -63,16 +63,140 @@ namespace Kyrsach
         {
             return sqlConnection;
         }
-        //public DataTable Select(string selectSQL)
-        //{
-        //    DataTable dataTable = new DataTable("dataBase");
-        //    SqlConnection sqlConnection = new SqlConnection(@"Data Source=DESKTOP-PQRNELH\SQLEXPRESS;Initial Catalog=VA_Crypto;Integrated Security=True");
-        //    sqlConnection.Open();
-        //    SqlCommand sqlCommand = sqlConnection.CreateCommand();
-        //    sqlCommand.CommandText = selectSQL;
-        //    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-        //    sqlDataAdapter.Fill(dataTable);
-        //    return dataTable;
-        //}
+        public DataTable Select(string selectSQL)
+        {
+            DataTable dataTable = new DataTable("dataBase");
+            //sqlConnection.Open();
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandText = selectSQL;
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+            sqlDataAdapter.Fill(dataTable);
+            //sqlConnection.Close();
+            return dataTable;
+        }
+        public DataTable CheckLoginAndPassword(string login, string password)
+        {
+            DataTable dataTable = new DataTable("dataBase");
+            dataTable = Select($"select userID, loginID, password, mail, date from users where loginID = '{login}' and password = '{password}'");
+            return dataTable;
+        }
+        public bool Insert(string selectSQL)
+        {
+            DataBase dataBase = new DataBase();
+            //sqlConnection.Open();
+            SqlCommand command = new SqlCommand(selectSQL, dataBase.getConnection());
+            //dataBase.openConnection();
+            if (command.ExecuteNonQuery() == 1)
+            {
+                //dataBase.closeConnection();
+                //sqlConnection.Close();
+                return true;
+            }      
+            else
+            {
+                //dataBase.closeConnection();
+                //sqlConnection.Close();
+                return false;
+            }
+
+        }
+        public bool Send(string selectSQL)
+        {
+            DataBase dataBase = new DataBase();
+            //sqlConnection.Open();
+            SqlCommand command = new SqlCommand(selectSQL, dataBase.getConnection());
+            dataBase.openConnection();
+
+            var returnParameter = new SqlParameter("@ReturnVal", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            command.Parameters.Add(returnParameter);
+
+            // execute
+            command.ExecuteNonQuery();
+
+            int ret = int.Parse(command.Parameters["@ReturnVal"].Value.ToString());
+            if (ret == 1)
+            {
+                MessageBox.Show("Успех");
+                //sqlConnection.Close();
+                dataBase.closeConnection();
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Неудача");
+                //sqlConnection.Close();
+                dataBase.closeConnection();
+                return false;
+            }
+
+        }
+        public bool RegisterInDataBase(string login, string PasswordHash, string mail, DateTime date)
+        {
+
+            if (Insert($"insert into users(loginID, password, mail, date) values('{login}','{PasswordHash}','{mail}','{date}')"))
+            {
+                return true;
+            }
+            else return false;
+            
+        }
+        public DataTable exchangeRatesChanges(int cyrrencyID)
+        {
+            DataTable dataTable = new DataTable("dataBase");
+            dataTable = Select($"select converstationCard from exchangeRatesChanges where FirstCurrencyID = '{cyrrencyID}'");
+            //sqlConnection.Close();
+            return dataTable;
+        }
+        public bool GanerateWalletForUser()
+        {
+            if (Insert($"EXEC CreateWalletForUser"))
+            {
+                return true;
+
+            }
+            else return false;
+        }
+
+        public DataTable CheckBalance(string loginID)
+        {
+            DataTable dataTable = new DataTable("dataBase");
+            dataTable = Select($"EXEC CheckInBalance '{loginID}'");
+            //sqlConnection.Close();
+            return dataTable;
+        }
+        public bool SendCurrency(string LoginID, string LoginID2, int amount, int CurrancyID)
+        {
+            return Send($"EXEC SendCurrancy '{LoginID}','{LoginID2}','{amount}','{CurrancyID}'");
+
+        }
+        public DataTable CheckTransaction()
+        {
+            DataTable dataTable = new DataTable("dataBase");
+            dataTable = Select($"selcet * from transactionTable");
+            //sqlConnection.Close();
+            return dataTable;
+        }
+        public bool ExchangeCurrency(decimal amoung, int FirstCurrency, int SecondCurrency, string login)
+        {
+            return Send($"EXEC ExchangeCurrency '{amoung.ToString("0.0000",System.Globalization.CultureInfo.InvariantCulture)}','{FirstCurrency}','{SecondCurrency}','{login}'");
+
+        }
+        public DataTable LoadDataHistory()
+        {
+            DataTable dataTable = new DataTable("dataBase");
+            dataTable = Select($"EXEC CheckHistory");
+            //sqlConnection.Close();
+            return dataTable;
+
+        }
+        public DataTable GetCof(int FirstCurrency, int SecondCurrency)
+        {
+            DataTable dataTable = new DataTable("dataBase");
+            dataTable = Select($"EXEC GetCof '{FirstCurrency}','{SecondCurrency}'");
+            //sqlConnection.Close();
+            return dataTable;
+
+        }
     }
 }

@@ -1,0 +1,66 @@
+﻿<Page x:Class="Kyrsach.View.Pages.Receive"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kyrsach.View.Pages"
+      xmlns:oxy="http://oxyplot.org/wpf"
+      xmlns:vm="clr-namespace:Kyrsach.ViewModel"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="950" d:DesignWidth="1000"
+      Title="VA_Crypto">
+    <Page.Resources>
+        
+    </Page.Resources>
+    
+    <Page.DataContext>
+        <vm:MainProgramViewModel/>
+    </Page.DataContext>
+    
+    <Grid>
+        <!--<Image Stretch="UniformToFill" Source="{StaticResource FoneImage}" />-->
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF17191B" Offset="1"/>
+                <GradientStop Color="#FF282C2E" Offset="0.003"/>
+                <GradientStop Color="#FF262829" Offset="0.49"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Label Foreground="#FFF3F3F3" Content="Your Address" HorizontalAlignment="Center" FontSize="28"></Label>
+
+            <Button MouseDoubleClick="ClipboardText">
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="ListBox.MouseDoubleClick">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IDAddress2" >
+                                    <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"></LinearDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame KeyTime="0:0:2" Value="1"></LinearDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame KeyTime="0:0:4" Value="0"></LinearDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IDAddress" >
+                                    <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"></LinearDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame KeyTime="0:0:4" Value="0"></LinearDoubleKeyFrame>
+                                    <LinearDoubleKeyFrame KeyTime="0:0:5" Value="1"></LinearDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+                <Grid >
+                    <TextBlock  Foreground="White" Name="IDAddress" VerticalAlignment="Center" Text="{Binding Login}" Background="{x:Null}" Opacity="0.7" Width="260" Height="35" HorizontalAlignment="Center"  FontSize="21" TextAlignment="Center"/>
+                    <TextBlock Foreground="White" Name="IDAddress2" VerticalAlignment="Center" Opacity="0" Text="Адрес скопирован"  Background="{x:Null}" Width="260" Height="35" HorizontalAlignment="Center"  FontSize="21" TextAlignment="Center"/>
+                    <fa:ImageAwesome VerticalAlignment="Center" HorizontalAlignment="Right" Opacity="0.7" Margin="0,0" Height="25"  Icon="Copy" Panel.ZIndex="1" Foreground="#FFF3F3F3"/>
+                      </Grid>
+                </Button>
+                
+           
+            <Image Margin="20" Height="250" Width="250" x:Name="pictureBox" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </StackPanel>
+        <Button Click="Close_Window" Content="X" HorizontalAlignment="Right" Margin="15" VerticalAlignment="Top" Width="40" Height="40" FontSize="25"/>
+       
+    </Grid>
+</Page>
