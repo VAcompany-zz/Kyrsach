@@ -18,7 +18,7 @@
         </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Foreground="#FFF3F3F3" Margin="05" Content="Код" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="40" Width="200" FontSize="25"/>
-            <TextBox Margin="0,8" Name="CheckCode" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="35" Width="202" FontSize="20"/>
+            <TextBox Margin="0,8" Name="CheckCode" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="35" Width="202" FontSize="23"/>
             <Button Margin="0,6"   BorderThickness="1" Click="RepetCode" Name="Repet_Code"  Content="Отправить код ещё раз" HorizontalAlignment="Center" Width="176"  Height="35" FontSize="15"/>
             <Button   Click="Button_Click" Content="Подтвердить" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="67" Width="202" FontSize="18">
                 <Button.Effect>

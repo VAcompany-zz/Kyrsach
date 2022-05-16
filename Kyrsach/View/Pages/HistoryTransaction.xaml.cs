@@ -41,7 +41,7 @@ namespace Kyrsach.View.Pages
         private void Close_Window(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
-            dt = data.LoadDataHistory();
+            dt = data.LoadDataHistory(App.Current.Resources["SaveLogin"].ToString());
         }
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
@@ -49,11 +49,11 @@ namespace Kyrsach.View.Pages
         }
         public void update()
         {
-            dt = data.LoadDataHistory();
+            dt = data.LoadDataHistory(App.Current.Resources["SaveLogin"].ToString());
             _todoData = new BindingList<HistoryTransactionModel>();
             foreach (DataRow row in dt.Rows)
             {
-                _todoData.Add(new HistoryTransactionModel() { FirstWalletId = row[0].ToString(), SecondWalletId = row[1].ToString(), Currency = row[2].ToString(), SumTransfer = row[3].ToString() });
+                _todoData.Add(new HistoryTransactionModel() { FirstWalletId = row[0].ToString(), SecondWalletId = row[1].ToString(), Currency = row[2].ToString(), SumTransfer = row[3].ToString(), DataTrans = ((DateTime)row[4]).ToString() });
             };
 
             HistoryList.ItemsSource = _todoData;

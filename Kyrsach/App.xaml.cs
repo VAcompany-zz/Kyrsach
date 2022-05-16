@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -16,5 +18,14 @@ namespace Kyrsach
     {
         public static AuthenticationService Authentication { get; set; } = new AuthenticationService();
         public static BalanceTransactions BalanceTransactions { get; set; } = new BalanceTransactions();
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            var cultureInfo = new CultureInfo("en-US");
+            NumberFormatInfo numberFormatInfo = new NumberFormatInfo();
+            numberFormatInfo.NumberDecimalSeparator = ".";
+            cultureInfo.NumberFormat = numberFormatInfo;
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+        }
     }
 }

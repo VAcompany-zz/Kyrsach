@@ -82,7 +82,7 @@
         
         <Grid>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,100,325,0" TextAlignment="Center"  Text="Я хочу" Foreground="#FF77797A" FontSize="26" Height="40" Width="100"></TextBlock>
-            <TextBox x:Name="Amount2" MaxLength="9" Background="{x:Null}"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Right" Margin="250,160,0,0" FontSize="55" Height="65" Width="250" BorderBrush="{x:Null}">
+            <TextBox IsReadOnly="True" x:Name="Amount2" MaxLength="9" Background="{x:Null}"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Right" Margin="250,160,0,0" FontSize="55" Height="65" Width="250" BorderBrush="{x:Null}">
                 <TextBox.Text>
                     <MultiBinding Converter="{StaticResource ConvertCurrency}" Mode="TwoWay">
                         <Binding ElementName="Amount" Path="Text"/>

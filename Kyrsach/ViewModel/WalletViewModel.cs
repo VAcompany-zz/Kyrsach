@@ -8,7 +8,6 @@ using OxyPlot;
 using OxyPlot.Series;
 using System.Windows.Controls;
 using System.Windows.Media;
-using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.Defaults;
 using System.Globalization;

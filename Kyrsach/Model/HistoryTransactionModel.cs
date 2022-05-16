@@ -38,6 +38,13 @@ namespace Kyrsach.Model
             get { return _sumTransfer; }
             set { _sumTransfer = value; }
         }
+        private string _DataTrans;
+
+        public string DataTrans
+        {
+            get { return _DataTrans; }
+            set { _DataTrans = value; }
+        }
 
 
 

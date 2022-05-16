@@ -182,10 +182,10 @@ namespace Kyrsach
             return Send($"EXEC ExchangeCurrency '{amoung.ToString("0.0000",System.Globalization.CultureInfo.InvariantCulture)}','{FirstCurrency}','{SecondCurrency}','{login}'");
 
         }
-        public DataTable LoadDataHistory()
+        public DataTable LoadDataHistory(string userID)
         {
             DataTable dataTable = new DataTable("dataBase");
-            dataTable = Select($"EXEC CheckHistory");
+            dataTable = Select($"EXEC CheckHistory '{userID}'");
             //sqlConnection.Close();
             return dataTable;
 

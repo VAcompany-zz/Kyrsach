@@ -30,7 +30,7 @@
                     <DataGridTextColumn Binding="{Binding Path = SecondWalletId}" IsReadOnly="True" Header="От кого"  Width="200"></DataGridTextColumn>
                     <DataGridTextColumn Binding="{Binding Path = Currency}" IsReadOnly="True" Header="Валюта"   Width="150"></DataGridTextColumn>
                     <DataGridTextColumn Binding="{Binding Path = SumTransfer}" IsReadOnly="True" Header="Количество"  Width="200"></DataGridTextColumn>
-                    <DataGridTextColumn  IsReadOnly="True" Header="Дата" Width="150"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path = DataTrans}" IsReadOnly="True" Header="Дата" Width="150"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
