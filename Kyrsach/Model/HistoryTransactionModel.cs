@@ -1,25 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Kyrsach.Services;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kyrsach.Model
 {
     public class HistoryTransactionModel
     {
+        public HistoryTransactionModel(string firstUser, int firstWalletId, int secondWalletId, string currency, string sumTransfer, string dataTrans)
+        {
+            FirstUser = firstUser;
+            FirstWalletId = firstWalletId;
+            SecondWalletId = secondWalletId;
+            Currency = currency;
+            SumTransfer = sumTransfer;
+            DataTrans = dataTrans;
+
+            if (VMLocator.VMService.MainVM.Wallets.FirstOrDefault(a => a.CurrencyID == FirstWalletId) == null)
+            {
+                TypeTrans = "Received";
+            }
+            else
+            {
+                TypeTrans = "Send";
+            }
+        }
         public string FirstUser { get; set; }
 
-        private string _FirstWalletId;
+        private int _FirstWalletId;
 
-        public string FirstWalletId
+        public int FirstWalletId
         {
             get { return _FirstWalletId; }
             set { _FirstWalletId = value; }
         }
-        private string _SecondWalletId;
+        private int _SecondWalletId;
 
-        public string SecondWalletId
+        public int SecondWalletId
         {
             get { return _SecondWalletId; }
             set { _SecondWalletId = value; }
@@ -45,8 +60,12 @@ namespace Kyrsach.Model
             get { return _DataTrans; }
             set { _DataTrans = value; }
         }
+        private string _TypeTrans;
 
-
-
+        public string TypeTrans
+        {
+            get { return _TypeTrans; }
+            set { _TypeTrans = value; }
+        }
     }
 }

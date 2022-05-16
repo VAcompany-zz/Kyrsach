@@ -7,11 +7,7 @@
       xmlns:vm="clr-namespace:Kyrsach.ViewModel" xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="950" d:DesignWidth="1000"
-      Title="VA_Crypto" Loaded="Page_Loaded">
-    
-    <Page.DataContext>
-        <vm:MainProgramViewModel/>
-    </Page.DataContext>
+      Title="VA_Crypto" Loaded="Page_Loaded" DataContext="{Binding MainVM, Source={StaticResource vmlocator}}">
 
     <Grid>
         <Grid.Background>

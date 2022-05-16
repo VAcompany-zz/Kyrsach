@@ -9,17 +9,12 @@
       mc:Ignorable="d" 
      d:DesignHeight="950" d:DesignWidth="1000"
       Title="VA_Crypto">
-
-    <Page.DataContext>
-        <vm:ExchangeViewModel/>
-    </Page.DataContext>
     <Page.Resources>
         <ResourceDictionary>
             <conv:CorrencyConvertor x:Key="ConvertCurrency"/>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
-        
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                 <GradientStop Color="#FF17191B" Offset="1"/>
@@ -31,7 +26,6 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Rectangle  Margin="15"  Height="150" Width="520" Fill="#FF2E3234"  Stroke="Gray" RadiusX="22" RadiusY="22" StrokeDashOffset="-3"/>
             <Rectangle Margin="15" Height="150" Width="520" Fill="#FF1D2021" Stroke="Gray" RadiusX="22" RadiusY="22" StrokeThickness="2"></Rectangle>
-            
         </StackPanel>
              <Button Click="Exchange" Margin="0,420,0,0" Content="Обменять" FontSize="25" Height="50" Width="520"></Button>
         <Grid>
@@ -79,7 +73,7 @@
                 </TextBlock.Text>
             </TextBlock>
         </Grid>
-        
+
         <Grid>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,100,325,0" TextAlignment="Center"  Text="Я хочу" Foreground="#FF77797A" FontSize="26" Height="40" Width="100"></TextBlock>
             <TextBox IsReadOnly="True" x:Name="Amount2" MaxLength="9" Background="{x:Null}"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Right" Margin="250,160,0,0" FontSize="55" Height="65" Width="250" BorderBrush="{x:Null}">
@@ -132,8 +126,5 @@
                 </ComboBoxItem>
             </ComboBox>
         </Grid>
-
-
-
     </Grid>
 </Page>

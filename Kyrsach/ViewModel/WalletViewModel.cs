@@ -1,29 +1,15 @@
 ﻿using LiveCharts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OxyPlot;
-using OxyPlot.Series;
-using System.Windows.Controls;
 using System.Windows.Media;
 using LiveCharts.Wpf;
 using LiveCharts.Defaults;
-using System.Globalization;
-using System.Data.SqlClient;
 using System.Data;
-using System.Windows;
-using System.Collections.ObjectModel;
-using Kyrsach.Model;
-
 
 namespace Kyrsach.ViewModel
 {
     public class WalletViewModel : BaseViewModel
     {
-
-
         private decimal _Balance;
         public decimal Balance
         {
@@ -113,10 +99,5 @@ namespace Kyrsach.ViewModel
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
-        
     }
-
-
 }
-    
-

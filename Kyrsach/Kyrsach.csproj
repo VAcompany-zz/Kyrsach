@@ -86,13 +86,12 @@
     <Compile Include="Model\LoginArgs.cs" />
     <Compile Include="Model\Util.cs" />
     <Compile Include="Services\BalanceTransactions.cs" />
-    <Compile Include="ViewModel\ExchangeViewModel.cs" />
-    <Compile Include="ViewModel\HistoryTranscriptionViewModel.cs" />
+    <Compile Include="Services\VMLocator.cs" />
+    <Compile Include="Services\VMService.cs" />
     <Compile Include="ViewModel\WalletViewModel.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainProgramViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\Convertors\CorrencyConvertor.cs" />
     <Compile Include="View\Pages\ExchangeCurrancy.xaml.cs">
       <DependentUpon>ExchangeCurrancy.xaml</DependentUpon>

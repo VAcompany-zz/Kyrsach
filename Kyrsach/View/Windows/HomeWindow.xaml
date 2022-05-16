@@ -7,7 +7,5 @@
         mc:Ignorable="d"
         Title="VA_Crypto" Height="950" Width="1000" WindowStyle="ThreeDBorderWindow"
           WindowStartupLocation="CenterScreen" Name="LoginWindow" MinHeight="900" MinWidth="550">
-    <Frame Name="mainFrame" Background="White" NavigationUIVisibility="Hidden">
-
-    </Frame>
+    <Frame Name="mainFrame" Background="White" NavigationUIVisibility="Hidden"/>
 </Window>

@@ -16,9 +16,8 @@ namespace Kyrsach
     /// </summary>
     public partial class App : Application
     {
-        public static AuthenticationService Authentication { get; set; } = new AuthenticationService();
-        public static BalanceTransactions BalanceTransactions { get; set; } = new BalanceTransactions();
-
+        public static AuthenticationService Authentication { get; set; }
+        public static BalanceTransactions BalanceTransactions { get; set; }
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             var cultureInfo = new CultureInfo("en-US");
@@ -26,6 +25,9 @@ namespace Kyrsach
             numberFormatInfo.NumberDecimalSeparator = ".";
             cultureInfo.NumberFormat = numberFormatInfo;
             Thread.CurrentThread.CurrentCulture = cultureInfo;
+
+            Authentication = new AuthenticationService();
+            BalanceTransactions = new BalanceTransactions();
         }
     }
 }
